@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Closer Every Second</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#fff1f3;--sub:#ffc4cf;--gold:#ffd9a8;--glow:#ff3b5c;--skin:#f6cba9;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{min-height:100%;color:var(--ink);font-family:'Playfair Display',Georgia,serif;overflow-x:hidden;
+  background:radial-gradient(ellipse at 50% 35%,#a3122f 0%,#6e0a22 40%,#2e0411 100%);background-attachment:fixed}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(20,0,6,.6));z-index:3}
+.sky{position:fixed;inset:0;overflow:hidden;z-index:1;pointer-events:none}
+.h{position:absolute;bottom:-40px;color:var(--glow);opacity:0;animation:rise linear infinite}
+@keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.7}90%{opacity:.4}100%{transform:translateY(-110vh) translateX(40px) rotate(25deg);opacity:0}}
+.p{position:absolute;top:-20px;width:11px;height:15px;background:#d6203f;border-radius:80% 0 80% 0;opacity:.8;animation:fall linear infinite}
+@keyframes fall{to{transform:translate(var(--sx),110vh) rotate(540deg)}}
+.tw{position:absolute;width:3px;height:3px;border-radius:50%;background:#ffd9a8;animation:tw 3s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.1;transform:scale(.6)}50%{opacity:.9;transform:scale(1.4)}}
+.hero{position:relative;min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(8px,1.8vh,18px);padding:20px 16px;text-align:center;z-index:2}
+.kicker{font-family:'Dancing Script','Brush Script MT',cursive;font-size:clamp(1.3rem,4vw,2rem);color:var(--sub)}
+h1{font-size:clamp(1.6rem,6vw,3.3rem);font-weight:700;line-height:1.15;background:linear-gradient(90deg,#fff1f3,#ffd9a8,#ff9aae,#fff1f3);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:-250% 0}}
+.stage{transition:transform .25s ease-out;cursor:pointer}
+.couple{height:clamp(200px,42vh,400px);width:auto;max-width:90vw;overflow:visible;animation:bob 5s ease-in-out infinite;filter:drop-shadow(0 12px 30px rgba(0,0,0,.45))}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.aura{transform-origin:200px 200px;animation:aura 2.5s ease-in-out infinite}
+@keyframes aura{0%,100%{opacity:.6;transform:scale(.94)}50%{opacity:1;transform:scale(1.06)}}
+.she{transform-origin:150px 250px;animation:kl 5s ease-in-out infinite}
+.he{transform-origin:260px 250px;animation:kr 5s ease-in-out infinite}
+@keyframes kl{0%,100%{transform:translate(-8px,2px) rotate(-3deg)}35%,70%{transform:translate(3px,0) rotate(2.5deg)}}
+@keyframes kr{0%,100%{transform:translate(8px,2px) rotate(3deg)}35%,70%{transform:translate(-3px,0) rotate(-2.5deg)}}
+.hair{transform-origin:130px 200px;animation:sway 4s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-1.5deg)}50%{transform:rotate(1.5deg)}}
+.skirt{transform-origin:130px 300px;animation:skirt 4s ease-in-out infinite}
+@keyframes skirt{0%,100%{transform:skewX(0)}50%{transform:skewX(-1.6deg)}}
+.arm{transform-origin:130px 330px;animation:arm 5s ease-in-out infinite}
+@keyframes arm{0%,100%{transform:translate(-4px,2px)}35%,70%{transform:translate(2px,0)}}
+.blush{animation:bl 5s ease-in-out infinite}
+@keyframes bl{0%,100%{opacity:.4}35%,70%{opacity:.95}}
+.kh{fill:#ff2d55;opacity:0;transform-box:fill-box;transform-origin:center;animation:kf 5s ease-out infinite}
+@keyframes kf{0%,34%{opacity:0;transform:translateY(6px) scale(.4)}38%{opacity:1}85%{opacity:0;transform:translateY(-95px) scale(1.5)}100%{opacity:0}}
+.b{position:fixed;pointer-events:none;z-index:5;color:var(--glow);animation:burst 1.3s ease-out forwards}
+@keyframes burst{to{transform:translate(var(--dx),var(--dy)) scale(1.7) rotate(var(--r));opacity:0}}
+.timer{display:flex;gap:clamp(8px,2.5vw,22px);justify-content:center;margin-top:4px}
+.box{position:relative;background:linear-gradient(160deg,rgba(255,255,255,.2),rgba(255,255,255,.05));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,200,210,.35);border-radius:22px;padding:clamp(10px,2vh,18px) clamp(12px,3vw,28px);min-width:clamp(88px,26vw,150px);box-shadow:0 10px 34px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.4);animation:glow 3s ease-in-out infinite}
+.box::after{content:"♥";position:absolute;top:-10px;right:-6px;font-size:16px;color:var(--glow);animation:hb 1.2s ease-in-out infinite}
+.box:nth-child(2){animation-delay:.5s}.box:nth-child(3){animation-delay:1s}
+@keyframes glow{0%,100%{box-shadow:0 10px 34px rgba(0,0,0,.35),0 0 14px rgba(255,59,92,.25),inset 0 1px 0 rgba(255,255,255,.4)}50%{box-shadow:0 10px 34px rgba(0,0,0,.35),0 0 38px rgba(255,59,92,.7),inset 0 1px 0 rgba(255,255,255,.4)}}
+@keyframes hb{0%,100%{transform:scale(1)}20%{transform:scale(1.4)}40%{transform:scale(1)}}
+.num{display:block;font-size:clamp(1.9rem,8vw,4rem);font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;line-height:1.1}
+.num.tick{animation:pop .35s ease}
+@keyframes pop{0%{transform:scale(1.2);color:#fff}100%{transform:scale(1)}}
+.lbl{font-size:clamp(.7rem,2.2vw,.95rem);letter-spacing:.22em;text-transform:uppercase;color:var(--sub)}
+.type{font-family:'Dancing Script','Brush Script MT',cursive;font-size:clamp(1.25rem,4vw,1.9rem);color:var(--sub);min-height:1.5em}
+.type::after{content:"|";margin-left:2px;animation:cur .8s steps(1) infinite}
+@keyframes cur{50%{opacity:0}}
+.flight{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);left:0;width:100%;height:80px;pointer-events:none;z-index:4;overflow:hidden}
+.plane{position:absolute;top:0;left:0;width:clamp(190px,36vw,310px);animation:fly 18s linear infinite;animation-delay:-3s}
+.plane svg{display:block;width:100%;overflow:visible;animation:pbob 2.4s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4))}
+@keyframes fly{from{transform:translateX(-45vw)}to{transform:translateX(110vw)}}
+@keyframes pbob{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(9px) rotate(1.5deg)}}
+.prop{transform-origin:278px 36px;animation:spin .12s linear infinite}
+@keyframes spin{50%{transform:scaleY(.25)}}
+.ban{animation:wave 1.6s ease-in-out infinite;transform-origin:134px 36px}
+@keyframes wave{0%,100%{transform:skewY(0)}50%{transform:skewY(3deg)}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:0s!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+<div class="sky" id="sky"></div>
+<div class="flight" aria-hidden="true"><div class="plane"><svg viewBox="0 0 300 72">
+<g class="ban"><path d="M4 20h130l-10 16 10 16H4l10-16z" fill="#fff1f3"/><text x="20" y="42" font-family="'Dancing Script','Brush Script MT',cursive" font-size="15" font-weight="600" fill="#a3122f">On my way to you &#9829;</text></g>
+<path d="M134 36L194 36" stroke="#ffd9a8" stroke-width="2"/>
+<path d="M232 38l-28 22h22l26-20z" fill="#ffd9a8"/>
+<path d="M190 36c0-8 30-12 62-8l24 8-24 8c-32 4-62 0-62-8z" fill="#fff1f3"/>
+<path d="M196 34l-14-17h15l12 17z" fill="#ff3b5c"/>
+<circle cx="236" cy="33" r="3" fill="#a3122f"/><circle cx="248" cy="33" r="3" fill="#a3122f"/><circle cx="260" cy="34" r="3" fill="#a3122f"/>
+<ellipse class="prop" cx="278" cy="36" rx="2.5" ry="13" fill="#ffd9a8"/>
+</svg></div></div>
+<main class="hero">
+  <p class="kicker">Every heartbeat brings us closer</p>
+  <h1>Until we’re together again</h1>
+
+  <div class="stage" id="stage">
+  <svg class="couple" viewBox="0 0 400 480" aria-label="A couple in red sharing a kiss">
+    <defs><radialGradient id="ag"><stop offset="0" stop-color="#ff9a6a" stop-opacity=".75"/><stop offset=".6" stop-color="#ff3b5c" stop-opacity=".25"/><stop offset="1" stop-color="#ff3b5c" stop-opacity="0"/></radialGradient></defs>
+    <circle class="aura" cx="200" cy="200" r="210" fill="url(#ag)"/>
+    <!-- her hair back -->
+    <g class="hair">
+      <path d="M96 150C70 90 150 78 192 110C140 130 118 200 126 262C130 320 152 380 122 432C80 452 38 402 48 332C56 270 38 200 96 150Z" fill="#5a2418"/>
+      <path d="M72 262q22 42 4 84M100 300q18 36 2 80M60 210q14 20 8 46" stroke="#86402a" stroke-width="4" fill="none" stroke-linecap="round"/>
+    </g>
+    <!-- her dress -->
+    <g class="skirt">
+      <path d="M14 480C26 380 70 322 128 262Q170 244 206 270C232 330 234 400 240 480Z" fill="#b3122e"/>
+      <path d="M70 360q50 24 140-6M40 430q80 30 190-10" stroke="#8a0b22" stroke-width="3" fill="none"/>
+      <path d="M96 340c10-12 20-12 30 0s20 12 30 0M120 400c10-12 20-12 30 0s20 12 30 0" stroke="#d3354f" stroke-width="2.5" fill="none" opacity=".7"/>
+    </g>
+    <path d="M138 215L146 264Q170 278 192 264L186 215Z" fill="#f0bd98"/>
+    <path d="M126 262Q168 292 206 270L198 250Q162 262 134 248Z" fill="var(--skin)"/>
+    <path d="M114 270q-12 30 6 54q32-8 50-44q-26-4-56-10z" fill="#cf1c3d"/>
+    <!-- his body -->
+    <path d="M234 480L240 304Q264 264 302 260L362 272Q398 302 400 382L400 480Z" fill="#a3162c"/>
+    <path d="M266 262L294 336L322 262Z" fill="#ffe9e6"/>
+    <path d="M266 262L254 344L294 336Z" fill="#8c1024"/><path d="M322 262l14 78-42-4z" fill="#8c1024"/>
+    <path d="M294 302l-10 14 10 64 10-64z" fill="#6e0c20"/><path d="M286 296h16l-3 10h-10z" fill="#5c0a1a"/>
+    <path d="M262 346L294 338L326 346L320 450L268 450Z" fill="#7e0e22"/>
+    <g fill="#3d0612"><circle cx="294" cy="372" r="3"/><circle cx="294" cy="398" r="3"/><circle cx="294" cy="424" r="3"/></g>
+    <circle cx="344" cy="334" r="8" fill="#d11a3f"/><circle cx="344" cy="334" r="4" fill="#8a0b22"/>
+    <path d="M252 215L260 264Q286 278 308 264L302 215Z" fill="#e4ab85"/>
+    <!-- his head -->
+    <g class="he">
+      <ellipse cx="302" cy="172" rx="7" ry="11" fill="#e8b48e"/>
+      <ellipse cx="254" cy="162" rx="48" ry="57" fill="#f1c29d"/>
+      <path d="M205 152C200 100 246 88 292 104C316 118 312 152 306 172C298 140 272 120 242 128C222 134 212 142 205 152Z" fill="#c9964e"/>
+      <path d="M232 112q30-10 54 6" stroke="#e2b46a" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M224 150q10-5 20-1" stroke="#a67a3a" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M226 165q9 7 19 0" stroke="#5a3a22" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M206 170l-6 12q3 4 9 3" stroke="#d89d78" stroke-width="2.5" fill="#f1c29d" stroke-linecap="round"/>
+      <circle class="blush" cx="256" cy="192" r="12" fill="#ff7a8a"/>
+      <ellipse cx="212" cy="200" rx="9" ry="4.5" fill="#d9707a"/>
+    </g>
+    <!-- her head -->
+    <g class="she">
+      <ellipse cx="110" cy="174" rx="7" ry="11" fill="#eab792"/>
+      <ellipse cx="158" cy="162" rx="50" ry="58" fill="var(--skin)"/>
+      <path d="M104 162C92 100 150 76 202 108C206 122 198 132 192 136C172 112 130 118 114 162Z" fill="#5a2418"/>
+      <path d="M114 160C132 110 172 108 198 132C176 126 150 134 130 172Z" fill="#6f2e1d"/>
+      <g transform="translate(112,128)"><ellipse cx="-14" cy="6" rx="10" ry="5" fill="#4a3a2a"/><ellipse cx="14" cy="-8" rx="10" ry="5" fill="#4a3a2a" transform="rotate(-30)"/><circle r="15" fill="#b3122e"/><circle r="9" fill="#d11a3f"/><path d="M-5 0a5 5 0 1 1 8 4" stroke="#7a0a1e" stroke-width="2.5" fill="none"/></g>
+      <path d="M168 144q10-6 22-2" stroke="#3a1a10" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M170 161q9 8 20 0" stroke="#2a1008" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+      <path d="M206 176l5 8q-2 4-8 3" stroke="#dba486" stroke-width="2.5" fill="var(--skin)" stroke-linecap="round"/>
+      <circle class="blush" cx="176" cy="192" r="13" fill="#ff7a8a"/>
+      <ellipse cx="203" cy="203" rx="10" ry="5.5" fill="#e0405a"/>
+    </g>
+    <!-- her hand on his cheek -->
+    <g class="arm">
+      <path d="M126 332Q190 338 234 264L256 220" stroke="var(--skin)" stroke-width="20" fill="none" stroke-linecap="round"/>
+      <path d="M246 196q24-10 32 12q4 24-14 38q-14 6-24-8z" fill="var(--skin)" stroke="#d89d78" stroke-width="2"/>
+      <path d="M262 200l8 26M270 204l6 20" stroke="#d89d78" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </g>
+    <!-- held hands -->
+    <path d="M188 404q26-16 50-2q6 12-4 22q-26 8-48 0z" fill="var(--skin)" stroke="#d89d78" stroke-width="2"/>
+    <path d="M214 412q22-12 42-2q4 10-4 20q-22 6-40 0z" fill="#f0bf9a" stroke="#d89d78" stroke-width="2"/>
+    <!-- kiss hearts -->
+    <g transform="translate(207,170)"><path class="kh" d="M0 0c-12-10-8-18 0-13 8-5 12 3 0 13z"/></g>
+    <g transform="translate(192,176)"><path class="kh" style="animation-delay:.3s" d="M0 0c-12-10-8-18 0-13 8-5 12 3 0 13z"/></g>
+    <g transform="translate(222,176)"><path class="kh" style="animation-delay:.6s" d="M0 0c-12-10-8-18 0-13 8-5 12 3 0 13z"/></g>
+  </svg>
+  </div>
+
+  <div class="timer" role="timer" aria-live="off">
+    <div class="box"><span class="num" id="h">0</span><span class="lbl">Hours</span></div>
+    <div class="box"><span class="num" id="m">00</span><span class="lbl">Minutes</span></div>
+    <div class="box"><span class="num" id="s">00</span><span class="lbl">Seconds</span></div>
+  </div>
+  <p class="type" id="type"></p>
+</main>
+<script>
+(function(){
+  var P=[2027,3,1];
+  var target=new Date(P[0],P[1],P[2],0,0,0).getTime();
+  var els={h:document.getElementById('h'),m:document.getElementById('m'),s:document.getElementById('s')},last={},done=false;
+  function set(k,v){if(last[k]!==v){last[k]=v;els[k].textContent=v;els[k].classList.remove('tick');void els[k].offsetWidth;els[k].classList.add('tick');}}
+  function update(){
+    var d=Math.max(0,target-Date.now()),t=Math.floor(d/1000);
+    var h=Math.floor(t/3600),m=String(Math.floor(t%3600/60)).padStart(2,'0'),s=String(t%60).padStart(2,'0');
+    set('h',h.toLocaleString('en-US'));set('m',m);set('s',s);
+    document.title='\u2665 '+h+'h '+m+'m '+s+'s';
+    done=d===0;return d;
+  }
+  function loop(){if(update()>0)setTimeout(loop,1000-(Date.now()%1000)+5);}
+  loop();
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)update();});
+  window.addEventListener('focus',update);
+
+  var lines=['Every second is a step toward you','Distance means nothing with you in my heart','Soon, my love, soon','Counting every heartbeat for you','Forever starts when we meet again','You are my favorite hello'];
+  var tel=document.getElementById('type'),li=0,ci=0,del=false;
+  function type(){
+    var txt=done?'Together at last \u2665':lines[li];
+    if(!del){tel.textContent=txt.slice(0,++ci);if(ci>=txt.length){del=true;return setTimeout(type,2200);}return setTimeout(type,70);}
+    tel.textContent=txt.slice(0,--ci);
+    if(ci<=0){del=false;li=(li+1)%lines.length;return setTimeout(type,400);}
+    setTimeout(type,30);
+  }
+  type();
+
+  var sky=document.getElementById('sky'),i,e;
+  for(i=0;i<20;i++){e=document.createElement('span');e.className='h';e.textContent=['\u2665','\u2764','\u2661'][i%3];
+    e.style.left=Math.random()*100+'%';e.style.fontSize=(14+Math.random()*26)+'px';
+    e.style.animationDuration=(8+Math.random()*10)+'s';e.style.animationDelay=(-Math.random()*16)+'s';sky.appendChild(e);}
+  for(i=0;i<16;i++){e=document.createElement('span');e.className='p';
+    e.style.left=Math.random()*100+'%';e.style.setProperty('--sx',(Math.random()*160-80)+'px');
+    e.style.animationDuration=(7+Math.random()*8)+'s';e.style.animationDelay=(-Math.random()*14)+'s';sky.appendChild(e);}
+  for(i=0;i<22;i++){e=document.createElement('span');e.className='tw';
+    e.style.left=Math.random()*100+'%';e.style.top=Math.random()*100+'%';e.style.animationDelay=(Math.random()*3)+'s';sky.appendChild(e);}
+
+  var stage=document.getElementById('stage');
+  window.addEventListener('pointermove',function(ev){
+    var x=ev.clientX/innerWidth-.5,y=ev.clientY/innerHeight-.5;
+    stage.style.transform='translate('+(x*18)+'px,'+(y*12)+'px) rotate('+(x*2.5)+'deg)';
+  });
+  document.addEventListener('mouseleave',function(){stage.style.transform='';});
+  window.addEventListener('pointerdown',function(ev){
+    for(var k=0;k<9;k++){var b=document.createElement('span');b.className='b';b.textContent='\u2665';
+      b.style.left=ev.clientX+'px';b.style.top=ev.clientY+'px';b.style.fontSize=(14+Math.random()*20)+'px';
+      b.style.setProperty('--dx',(Math.random()*160-80)+'px');b.style.setProperty('--dy',(-40-Math.random()*140)+'px');
+      b.style.setProperty('--r',(Math.random()*80-40)+'deg');
+      b.addEventListener('animationend',function(){this.remove();});document.body.appendChild(b);}
+  });
+})();
+</script>
+</body>
+</html>
